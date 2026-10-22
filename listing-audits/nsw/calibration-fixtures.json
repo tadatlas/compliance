@@ -1,0 +1,96 @@
+{
+  "_note": "Synthetic listings for calibrating the compliance agent. Not real properties. Assume today's date is the run date; dates use 2026.",
+  "fixtures": [
+    {
+      "id": "F1",
+      "Address": "1 Test Street, Mosman",
+      "Status": "For Sale",
+      "Sale method": "Private Treaty",
+      "Price (display)": "Contact Agent",
+      "Headline": "Light-filled family home moments to Balmoral",
+      "Summary": "A beautifully presented four-bedroom home with a north-facing garden.",
+      "Beds": 4, "Baths": 2, "Cars": 1,
+      "expected": [{"check": "P2", "severity": "Readiness"}, {"check": "M2", "severity": "Needs evidence", "quote": "north-facing"}]
+    },
+    {
+      "id": "F2",
+      "Address": "2 Test Avenue, Neutral Bay",
+      "Status": "For Sale",
+      "Sale method": "Private Treaty",
+      "Price (display)": "Guide $2,400,000",
+      "Headline": "Offers over $2.2m — rare Neutral Bay opportunity",
+      "Summary": "Three bedrooms plus study, two bathrooms.",
+      "Beds": 3, "Baths": 2, "Cars": 1,
+      "expected": [{"check": "P4", "severity": "High"}, {"check": "P3", "severity": "Medium"}, {"check": "P1", "severity": "Needs evidence"}]
+    },
+    {
+      "id": "F3",
+      "Address": "3 Test Road, Cremorne",
+      "Status": "For Sale",
+      "Sale method": "Auction",
+      "Price (display)": "Auction Guide $3,100,000",
+      "Auction date": "2026-09-12",
+      "Next event type": "Auction",
+      "Next event date": "2026-09-12",
+      "Headline": "Five bedrooms on 650sqm",
+      "Summary": "Four generous bedrooms and a home office set on 650sqm.",
+      "Beds": 5, "Baths": 3, "Cars": 2, "Land size": "580sqm",
+      "expected": [{"check": "S1", "severity": "High"}, {"check": "M1", "severity": "High", "quote": "650sqm vs 580sqm"}, {"check": "M5", "severity": "High"}, {"check": "P1", "severity": "Needs evidence"}]
+    },
+    {
+      "id": "F4",
+      "Address": "4 Test Lane, Kirribilli",
+      "Status": "For Sale",
+      "Sale method": "Private Treaty",
+      "Price (display)": "$1,850,000 - $2,200,000",
+      "Headline": "The best harbour views in Kirribilli",
+      "Summary": "DA-approved plans for a rooftop terrace. 2 minute walk to the ferry.",
+      "Beds": 2, "Baths": 2, "Cars": 1,
+      "expected": [{"check": "P5", "severity": "Medium"}, {"check": "M3", "severity": "Medium", "quote": "The best harbour views"}, {"check": "M2", "severity": "Needs evidence", "quote": "DA-approved plans"}, {"check": "M2", "severity": "Needs evidence", "quote": "2 minute walk to the ferry"}, {"check": "P1", "severity": "Needs evidence"}]
+    },
+    {
+      "id": "F5",
+      "Address": "5 Test Place, Cammeray",
+      "Status": "Sold",
+      "Sale method": "Private Treaty",
+      "Price (display)": "Guide $2,900,000",
+      "Headline": "Inspect this Saturday",
+      "Next event type": "Open home",
+      "Next event date": "2099-01-01",
+      "expected": [{"check": "S2", "severity": "High"}]
+    },
+    {
+      "id": "F6",
+      "Address": "6 Test Street, North Sydney",
+      "Status": "For Lease",
+      "Price (display)": "$950 - $1,050 per week",
+      "Headline": "Apply now with your best offer",
+      "Summary": "Virtually staged for illustration.",
+      "Beds": 2, "Baths": 1, "Cars": 1,
+      "expected": [{"check": "R1", "severity": "High"}, {"check": "R2", "severity": "High"}]
+    },
+    {
+      "id": "F7",
+      "Address": "7 Test Crescent, Mosman",
+      "Status": "For Sale",
+      "Sale method": "Private Treaty",
+      "Price (display)": "Price Guide $4,200,000",
+      "Headline": "Sun-drenched sanctuary with sweeping garden",
+      "Summary": "An exceptional four-bedroom home with a stunning outlook. Photos include digitally added furniture and landscaping.",
+      "Beds": 4, "Baths": 3, "Cars": 2,
+      "expected": [{"check": "P1", "severity": "Needs evidence"}, {"check": "I1", "severity": "Medium", "quote": "digitally added furniture and landscaping", "note": "Disclosed, but 'landscaping' alters the property itself — flag for review, not a clean pass"}]
+    },
+    {
+      "id": "F8",
+      "Address": "8 Test Parade, Cremorne Point",
+      "Status": "For Sale",
+      "Sale method": "Private Treaty",
+      "Price (display)": "Guide $3,300,000",
+      "Headline": "Elegant three-bedroom apartment",
+      "Summary": "Three bedrooms, two bathrooms, secure parking. Moments to the wharf.",
+      "Beds": 3, "Baths": 2, "Cars": 1,
+      "expected": [{"check": "P1", "severity": "Needs evidence"}],
+      "_purpose": "Control case: should return no High or Medium findings. Any flag here is a false positive."
+    }
+  ]
+}
