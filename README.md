@@ -29,7 +29,8 @@ compliance/
 
 **One-time setup**
 1. Clone this repo and open it in Cursor.
-2. Cursor Settings → MCP → make sure **Notion** is connected with access to *Atlas iQ App → Property Marketing Database*.
+2. Cursor Settings → MCP → make sure **Notion** is connected with access to *Atlas iQ App → Property Marketing Database* and the *COMPLIANCE* page.
+3. Make sure **Playwright** is available to the agent. It reads the live atlas.com.au listings and the official NSW Fair Trading pages, as set out in Notion → *Compliance monitoring — handover for Alice*.
 
 **Each run**
 1. Pull the latest (`git pull`).
@@ -39,19 +40,22 @@ compliance/
 
 3. Review the calibration result. If it caught every High finding and flagged nothing High/Medium on fixture F8, reply:
 
-   > Calibration accepted. Continue with Steps 1–6 for all LNS listings.
+   > Calibration accepted. Continue with Steps 1–7 for all LNS listings.
 
-4. Check the two new files in `listing-audits/nsw/reports/`, then commit them:
+4. Check the three new files in `listing-audits/nsw/reports/`, then commit them:
    `git add listing-audits/nsw/reports && git commit -m "LNS audit YYYY-MM-DD" && git push`
-5. Send the report to the Licensee-in-Charge.
+5. After review, import `lns-listing-checks-*.csv` into Notion → COMPLIANCE → **Listing Checks**, and log anything confirmed as a breach in the **Non-Compliance Register** with LIC sign-off.
+6. Send the report to the Licensee-in-Charge.
 
-**Suggested cadence:** fortnightly, plus once the NSW price-guide rule commences (expected November 2026).
+**Cadence:** every second Wednesday from 4 November 2026, matching the Listing Checks automation in the COMPLIANCE page.
+
+**How this fits the Notion COMPLIANCE system:** this repo holds the agent and its reports. Notion stays the system of record (Listing Register, Listing Checks, Non-Compliance Register). The agent reads Notion and never writes to it; a person imports the reviewed results.
 
 ---
 
 ## Before every run, check
 
-- **Legal frame is current.** Step 2 of the brief reflects NSW law as at October 2026. When NSW Fair Trading announces the commencement date for the underquoting reforms, update Step 2 and P2 severity (Readiness → High).
+- **Legal frame.** The agent re-reads the official Fair Trading pages each run (Step 1) and reports what they say. If it reports a conflict with the baseline in Step 3, update the brief before relying on the results.
 - **Data is fresh.** The Properties database updates daily at 10am from atlas.com.au.
 
 ## Extending to other offices
